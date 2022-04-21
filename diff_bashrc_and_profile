@@ -1,0 +1,21 @@
+When you are new to linux and may have stumble upon files .bashrc, .bash_profile, .bash_logout like me. So, whats the difference between these file, what can we append in these files which will make our life easier, well you have came in right place.
+
+First we have to know what happens when you first open the terminal does .bashrc runs or .bash_profile runs. When you open the terminal .bashrc runs not .bash_profile. File .bash_profile only runs when you log in to the system. I want you to just see commands written in .bash_profile, you will see that .bashrc file is called.  <cat bash_profile image>
+
+So, what happen is when you log into your system the .bash_profile script runs and it will call .bashrc is called and both .bashrc and .bash_profile runs. After loging in again, you needed to open up the terminal the .bashrc gets executed not .bash_profile.
+Let me show you some the screenshots to demonstrate:
+<some screenshots>
+
+Also there is next file .bash_logout which runs when you logout.
+These file comes handy when you need alias and set environment variables. When you need alias add alias in .bashrc file. And when you need to set environment variables you can export path in .bash_profile. <Some screenshots>
+
+Exporting path in .bashrc also works, but really don't do it. It's wrong and bad in every aspects. Many newbie does this mistake, I have also done this when i was new. Let me explain why it is bad. I assume you know how path works. So when you add new path it's just gonna append path at end or at beginning, that's your taste where you want to append. Now let us suppose you ecported path in .bashrc [again this is bad] then when you open a terminal it's gonna add path and for sure you will open more than one terminal and there will be lots of duplicate path. This will make your path variable log and sketchy. It will work, no wonder but this practice is wrong. Now let us suppose you exported path in .bash_profile then as I have told before it runs only once while loging in so there will not be any duplicate path. Let me show some screenshots to demonstrate:
+<some screenshots>
+
+And in alias case you need to keep it in .bashrc not .bash_profile. If you kept alias in .bash_profile then it will not work. Unlike path the alias exists only in current session where as path exists until loging out.
+
+Now there is file .bash_logout. So whats the use of it then. Normally, it is not used. Tho it can come used. It comes on handy if you want your computer clean and use temporary files. If you want to delete temporary file automatically when you logout. You can create temp directory and add this command in your .bash_logout file. 
+<.bash_logout image>
+
+Conclusion 
+.bashrc, .bash_profile are very handy file if you use it right

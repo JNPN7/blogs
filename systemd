@@ -1,0 +1,62 @@
+systemd is service, daemons and system manager of linux. It's very important part of linux you need to understand about systemd if you are using linux as an operating system windows. Systemd provides functions like startup of services at boot time which will make our life easier we don't need to startup services and daemons always we login to our system, enabling, disabling, stoping, restarting services and daemons. systemd is default init system for maximul linus distros. 
+
+file system for systemd
+You can find systemd directory inside /etc/ and also inside /usr/lib/ . You may be wonder why there are two systemd, it was my first question. There is small differece between /etc/systemd and /usr/lib/systemd. /usr/lib/systemd contains systemd unit files which is saved by the package manager. When a software is installed then their service file is written inside /usr/lib/systemd. /etc/systemd is directory where the admin writes needed daemon and servies. So when you need to add some services then you ought to keep it in /ets/systemd/system.
+
+In systemd, a single servies is refered as an "unit". We call them systemd unit. We define those unit in a file called unit file. There are diffent kind of  unit files which can be distinguised by the extension of file such as:
+1. .service => system servies
+2. .device => device file recognized by kernel
+3. .mount => mount file
+4. .socket => inter process communication socket
+5. .timer => systemd timer
+5. .target => group of systemd units
+and so on more on that later
+
+You can find systemd unit files inside directory /etc/systemd/system. 
+<screeshot of ls system>
+
+Controllind servies 
+To start, stop, restart, reload servies, you can use systemctl command.
+Start service
+sudo systemctl start servicename
+or
+sudo systemctl start servicename.service
+The systemctl will recognize all servicename so no need to add .service postfix.
+
+Stop service
+similar to start, you just need to replace start by stop.
+sudo systemctl stop serviename
+
+restart service
+
+reload service
+
+status
+To know the status of services i.e. is service running or not and other information about status.
+sudo systemctl status servicename
+
+Enabling disabling services in boot
+As I told before, one of the function of systemd is to startup service in boot. So to enable the service startup in boot you can use following command
+sudo systemctl enable servicename
+simillary if you want remove service from start up you can disable it by following
+sudo systemctl disable servicename
+
+Listing all the units
+If you forget the services you have, you can simply navigate to systemd/system and check all the services but there is a better way. You can just check all services form systemctl command
+systemctl list-units
+for unit files
+systemctl list-unit-files
+
+If you want only servies then you can use option called type:
+systemctl list-units --type=service
+simillary for active servies only
+systemctl list-units --state=active
+
+Masking and unmasking units
+If you want to mask unit i.e. prevent systemd unit from being started, automatically or manually you can use following command
+sudo systemctl mask servicename.service
+and to unmask
+sudo systemctl unmask servicename.service
+
+conclusion 
+systemd, service manager manages the service. Using systemctl you can control these systemd units. Now you are able to start, stop, enable, disable services.
