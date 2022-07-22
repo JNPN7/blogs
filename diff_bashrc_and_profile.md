@@ -45,3 +45,5 @@ Now there is file .bash_logout. So whats the use of it then. Normally, it is not
 
 # Conclusion
 .bashrc, .bash_profile are very handy file if you use it right. It makes our live a lot easier.
+
+
